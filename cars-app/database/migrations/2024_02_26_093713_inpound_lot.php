@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('inpound_lot', function (Blueprint $table) {
             $table->id();
             $table->string('model');
-            $table->string('Make');
+            $table->string('make');
             $table->string('reg_nr');
             $table->string('owner')->nullable();
             $table->integer('fine');
