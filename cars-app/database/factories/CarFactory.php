@@ -17,7 +17,7 @@ class CarFactory extends Factory
     public function definition(): array
     {
         $carCompanies = ['Honda', 'Ferrari', 'Volvo', 'Saab', 'Hyundai', 'Skoda', 'Bugatti', 'Fiat', 'Ciroën', 'Renault', 'Volkswagen', 'Kia', 'Toyota', 'Audi', 'Seat'];
-        $regNr = fake()->word(3) . '-' . strval(fake()->numberBetween(99, 999));
+        $regNr = strtoupper(fake()->lexify('???')) . '-' . strval(fake()->numberBetween(99, 999));
 
         return [
             'model' => fake()->word(),
