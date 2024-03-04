@@ -18,7 +18,7 @@ class LoginController extends Controller
         if (Auth::attempt($input)) {
             return redirect('/dashboard');
         } else {
-            return Redirect::back()->withErrors("whoops");
+            return Redirect::back()->withErrors("invalid login credentials");
         };
     }
 }
