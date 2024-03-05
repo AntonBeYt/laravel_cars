@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
 <nav>
     <h1>Hello, {{ $user->name }}</h1>
 
@@ -18,11 +23,12 @@
             <form action="/car/{{$car->id}}/updateFine" method="post">
             @csrf
             @method('patch')
-            <label for="newFine">New fine:</label>
-            <input type="text" name="newFine">
-            <button type="submit">Update fine</button>
+            <div class="fine-input">
+                <input type="text" name="newFine" placeholder="new fine">
+                <button type="submit">Update fine</button>
+            </div>
         </form>
-        <form action="/car/{{$car->id}}/delete" method="post">
+        <form action="/car/{{$car->id}}/delete" method="post" class="delete-form">
             @csrf
         <button type="submit">Remove car from lot</button>
         </form>
@@ -31,7 +37,8 @@
 </section>
 <section class="inpound-car">
     <h2>Register new inpounded car</h2>
-    <form action="/addCar" method="post">
+    <form action="/addCar" method="post"
+    class="inpound-form">
         @csrf
         <label for="make">Make:</label>
         <input type="text" name="make">
