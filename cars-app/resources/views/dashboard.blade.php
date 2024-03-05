@@ -13,22 +13,25 @@
             <p>{{$car->make}}</p>
             <p>{{$car->model}}</p>
             <p>{{$car->reg_nr}}</p>
+            <p>{{$car->owner}}</p>
             <p>{{$car->fine}}:-</p>
-            <form action="/car/{{$car->id}}/update-fine" method="post">
+            <form action="/car/{{$car->id}}/updateFine" method="post">
             @csrf
-            <label for="new-fine">New fine:</label>
-            <input type="text" name="new-fine">
+            @method('patch')
+            <label for="newFine">New fine:</label>
+            <input type="text" name="newFine">
             <button type="submit">Update fine</button>
         </form>
-        <form action="/car/{{$car->id}}/delete">
-        <button type="submit">remove car from lot</button>
+        <form action="/car/{{$car->id}}/delete" method="post">
+            @csrf
+        <button type="submit">Remove car from lot</button>
         </form>
         </div>
     @endforeach
 </section>
 <section class="inpound-car">
     <h2>Register new inpounded car</h2>
-    <form action="/cars" method="post">
+    <form action="/addCar" method="post">
         @csrf
         <label for="make">Make:</label>
         <input type="text" name="make">
