@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarAddController;
 use App\Http\Controllers\CarDeleteController;
 use App\Http\Controllers\CarUpdateFineController;
 use App\Http\Controllers\DashboardController;
@@ -28,3 +29,4 @@ Route::post('/logout', LogoutController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 Route::post('car/{car}/delete', CarDeleteController::class);
 Route::patch('car/{car}/updateFine', CarUpdateFineController::class);
+Route::post('/addCar', CarAddController::class);
