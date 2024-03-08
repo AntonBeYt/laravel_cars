@@ -11,6 +11,8 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_view_login_form(): void
     {
         $response = $this->get('/');
@@ -22,7 +24,7 @@ class LoginTest extends TestCase
         $user = User::create(
             [
                 'name' => 'Testare',
-                'email' => 'test@test.se',
+                'email' => 'test@testmail.se',
                 'password' => Hash::make('hej')
             ]
         );

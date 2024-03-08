@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 
 
-class CarAddTest extends TestCase
+class CarTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -41,12 +41,13 @@ class CarAddTest extends TestCase
 
     public function test_update_fine(): void
     {
+
         $this->followingRedirects();
 
         $user = User::create(
             [
                 'name' => 'Testare',
-                'email' => 'test@testmail2.se',
+                'email' => 'test@testmail.se',
                 'password' => Hash::make('hej')
             ]
         );
@@ -61,10 +62,40 @@ class CarAddTest extends TestCase
             'fine' => '100',
         ]);
 
-        $this->post("/car/$car->id/updateFine", ['fine' => '200']);
+        $this->patch("/car/{$car->id}/updateFine", [
+            '_method' => 'PATCH',
+            'newFine' => '200'
+        ]);
         $this->assertDatabaseHas('cars', [
             'id' => $car->id,
             'fine' => '200',
         ]);
+    }
+
+    public function test_delete_car(): void
+    {
+
+        $this->followingRedirects();
+
+        $user = User::create(
+            [
+                'name' => 'Testare',
+                'email' => 'test@testmail.se',
+                'password' => Hash::make('hej')
+            ]
+        );
+
+        $this->actingAs($user);
+
+        $car = Car::create([
+            'model' => 'Ford',
+            'make' => 'Fiesta',
+            'reg_nr' => 'AAA-111',
+            'owner' => 'Testare Testsson',
+            'fine' => '100',
+        ]);
+
+        $this->post("/car/{$car->id}/delete");
+        $this->assertDatabaseMissing('cars', ['id' => '{$car->id}']);
     }
 }
