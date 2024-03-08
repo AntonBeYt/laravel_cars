@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,6 +26,7 @@ class CarFactory extends Factory
             'reg_nr' => $regNr,
             'owner' => fake()->name(),
             'fine' => fake()->numberBetween(100, 7000),
+            'user_id' => fake()->randomElement(User::pluck('id'))
             //
         ];
     }
