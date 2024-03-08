@@ -4,7 +4,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
 <nav>
-    <h1>Hello, {{ $user->name }}</h1>
+    <h1>Hello, {{ $user->name }} # {{$user->id}}</h1>
 
     <form method="post" action="/logout">
         @csrf
@@ -20,6 +20,7 @@
             <p>{{$car->reg_nr}}</p>
             <p>{{$car->owner}}</p>
             <p>{{$car->fine}}:-</p>
+            <p>#{{$car->user_id}}</p>
             <form action="/car/{{$car->id}}/updateFine" method="post">
             @csrf
             @method('patch')
@@ -50,6 +51,8 @@
         <input type="text" name="owner">
         <label for="fine">Fine:</label>
         <input type="text" name="fine">
+        <label for="employee">Employee id:</label>
+        <input type="text" name="employee">
         <button type="submit">Inpound</button>
     </form>
 </section>

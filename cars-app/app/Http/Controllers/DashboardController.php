@@ -13,8 +13,9 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $employees = DB::table('users')->get();
         $user = $request->user();
         $cars = DB::table('cars')->get();
-        return view('dashboard', ['user' => $user, 'cars' => $cars]);
+        return view('dashboard', ['employees' => $employees, 'user' => $user, 'cars' => $cars]);
     }
 }
