@@ -42,17 +42,17 @@
     class="inpound-form">
         @csrf
         <label for="make">Make:</label>
-        <input type="text" name="make">
+        <input type="text" name="make" id="make">
         <label for="model">Model:</label>
-        <input type="text" name="model">
+        <input type="text" name="model" id="model">
         <label for="reg_nr">Registration number:</label>
-        <input type="text" name="reg_nr">
+        <input type="text" name="reg_nr" id="reg_nr">
         <label for="owner">Owner (if known):</label>
-        <input type="text" name="owner">
+        <input type="text" name="owner" id="owner">
         <label for="fine">Fine:</label>
-        <input type="text" name="fine">
-        <label for="employee">Employee id:</label>
-        <input type="text" name="employee">
+        <input type="text" name="fine" id="fine">
+        <label for="user_id">Employee id:</label>
+        <input type="text" name="user_id" id="user_id">
         <button type="submit">Inpound</button>
     </form>
 </section>
