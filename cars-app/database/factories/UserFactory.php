@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'name' => $fullName,
             'email' => strtolower($firstName) . "@" . fake()->safeEmailDomain(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make('qwe'),
             'remember_token' => Str::random(10),
         ];
     }

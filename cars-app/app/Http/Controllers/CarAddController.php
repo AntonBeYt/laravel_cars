@@ -18,6 +18,7 @@ class CarAddController extends Controller
         $car->reg_nr = $request->get('reg_nr');
         $car->owner = $request->get('owner');
         $car->fine = $request->get('fine');
+        $car->user_id = $request->get('user_id');
         $car->save();
         return back();
         //

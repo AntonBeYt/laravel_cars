@@ -35,6 +35,7 @@ class CarTest extends TestCase
             'reg_nr' => 'AAA-111',
             'owner' => 'Testare Testsson',
             'fine' => '100',
+            'user_id' => $user->id,
         ]);
         $this->assertDatabaseHas('cars', ['owner' => 'Testare Testsson']);
     }
@@ -60,6 +61,7 @@ class CarTest extends TestCase
             'reg_nr' => 'AAA-111',
             'owner' => 'Testare Testsson',
             'fine' => '100',
+            'user_id' => $user->id,
         ]);
 
         $this->patch("/car/{$car->id}/updateFine", [
@@ -93,6 +95,7 @@ class CarTest extends TestCase
             'reg_nr' => 'AAA-111',
             'owner' => 'Testare Testsson',
             'fine' => '100',
+            'user_id' => $user->id,
         ]);
 
         $this->post("/car/{$car->id}/delete");
